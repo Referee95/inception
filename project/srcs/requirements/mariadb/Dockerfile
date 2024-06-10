@@ -1,26 +1,15 @@
-# Use the official Debian image as the base image
 FROM debian:latest
 
-# Install necessary packages and MariaDB
+
 RUN apt-get update && \
-    apt-get install -y mariadb-server && \
-    apt-get clean
+    apt-get install -y mariadb-server
 
-# Set environment variables
-ENV MYSQL_ROOT_PASSWORD=123
+RUN mkdir -p /var/run/mysql /run/mysqld
+RUN chmod  777 /run/mysqld
+COPY ./tools/mr_db.sh /
 
-# Expose the default MySQL port
-EXPOSE 3306
+RUN chmod +x /mr_db.sh
 
-# Copy the custom MySQL configuration file if you have one
-# COPY my.cnf /etc/mysql/my.cnf
+ENTRYPOINT ["sh", "/mr_db.sh"]
 
-# Add a script to initialize the database
-COPY docker-entrypoint.sh /usr/local/bin/
-
-# Make the script executable
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-# Run the MariaDB server
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["mysqld"]
+CMD ["mariadbd" , "--user=mysql", "--bind-address=0.0.0.0"]
