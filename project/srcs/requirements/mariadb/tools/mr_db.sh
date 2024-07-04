@@ -11,3 +11,5 @@ FLUSH PRIVILEGES;" > /init_db.sql
 mariadbd --user=mysql --bootstrap < /init_db.sql;
 
 exec "$@" 
+
+#docker run --name khalil mariadb 
