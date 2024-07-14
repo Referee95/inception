@@ -3,9 +3,11 @@ FROM debian:bookworm
 RUN apt-get update && \
     apt-get install -y mariadb-server
 
-RUN mkdir -p /var/run/mysql /run/mysqld
+RUN apt install -y curl
 
-RUN chmod  777 /run/mysqld
+RUN mkdir -p /var/run/mysqld
+
+RUN chmod 777 /var /var/run /var/run/mysqld /run/mysqld /var/lib/mysql
 
 COPY ./tools/mr_db.sh /
 

@@ -12,8 +12,5 @@ COPY index.html /var/www/html/
 
 COPY conf/nginx.conf /etc/nginx/conf.d/
 
-# Expose port 443
-EXPOSE 443
-
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]

@@ -9,7 +9,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 RUN mkdir -p /var/www/html 
 
-COPY conf/wp-config-create.sh /
+COPY ./conf/wp-config-create.sh /
 
 RUN chmod 777 /wp-config-create.sh
 
