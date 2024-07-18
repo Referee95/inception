@@ -1,5 +1,5 @@
 all :
-		@mkdir -p ~/Downloads/mariadb/ ~/Downloads/wordpress/
+		@mkdir -p ~/data ~/data/mariadb/ ~/data/wordpress/
 		@docker-compose -f srcs/docker-compose.yml up -d --build 
 
 clean :
@@ -7,6 +7,6 @@ clean :
 
 fclean : clean		
 		@docker system prune -af
-		@rm -rf ~/Downloads/mariadb/ ~/Downloads/wordpress/
+		@sudo rm -rf ~/data/mariadb/ ~/data/wordpress/
 
-re : clean all
+re : fclean all

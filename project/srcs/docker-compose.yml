@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     container_name: mariadb
     volumes:
-      - mariadb:/var/lib/mysql
+      - mariadb:/var/run/mysqld
     env_file :
       - .env
     expose:
@@ -56,14 +56,14 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ~/Downloads/mariadb
+      device: ~/data/mariadb
 
   wordpress:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ~/Downloads/wordpress
+      device: ~/data/wordpress
 
 
 
