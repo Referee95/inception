@@ -16,9 +16,12 @@ services:
       - "3306"
     networks : 
       - inception
+    restart : on-failure
 
 
   wordpress:
+    depends_on:
+      - mariadb
     image: wordpress
     build:
       context: ./requirements/wordpress/
@@ -32,9 +35,13 @@ services:
       - "9000"
     networks : 
       - inception
+    restart : on-failure
+    
 
     
   nginx:
+    depends_on:
+      - wordpress
     image: nginx
     build:
       context: ./requirements/nginx/
@@ -48,7 +55,8 @@ services:
       - "443:443"
     networks :
       - inception
-    
+    restart : on-failure
+ 
 volumes:
 
   mariadb:
@@ -64,8 +72,6 @@ volumes:
       type: none
       o: bind
       device: ~/data/wordpress
-
-
 
 networks:
   inception :

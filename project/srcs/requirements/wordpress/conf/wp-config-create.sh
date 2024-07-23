@@ -21,8 +21,8 @@ wp core install  --url=$DOMAIN_NAME \
                  --admin_user=$WP_ADMIN \
                  --admin_password=$WP_ADMIN_PASS \
                  --admin_email=$WP_ADMIN_EMAIL \
-                 --path=/var/www/html --allow-root --skip-email
+                 --path=/var/www/html --allow-root 
 
-wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PASS --path=/var/www/html --allow-root
+wp user create $WP_USER $WP_EMAIL --role=editor --user_pass=$WP_PASS --path=/var/www/html --allow-root
 
-exec php-fpm8.2 -F
+exec "$@"

@@ -13,4 +13,6 @@ COPY ./conf/wp-config-create.sh /
 
 RUN chmod 777 /wp-config-create.sh
 
-CMD ["sh", "/wp-config-create.sh"]
+ENTRYPOINT ["sh", "/wp-config-create.sh"]
+
+CMD ["php-fpm8.2", "-F"]
