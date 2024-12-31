@@ -160,5 +160,3 @@ using several different containers to manage a project become too slow because y
 
 # Conclusion
 docker is a beautiful and fun tool that help you to become unbeatable , it's hard to learn it with theorical courses , in the other hand just making a small program and practice , face problems and find solution for it will make you stronger and much better on it ! , in the end i hope you found it fun and helpful 
-
-**made with love for you 💕**
